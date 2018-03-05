@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+set -u
+
+mkdir -v -p gopath/{bin,src}
+
+docker run --rm -it -v "${PWD}:/x" -v "$PWD/gopath:/go" golang bash -c 'go get -v github.com/machine-drivers/docker-machine-driver-qemu/cmd && cp -v -p /go/bin/cmd /x/docker-machine-driver-qemu'
